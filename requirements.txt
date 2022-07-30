@@ -1,0 +1,4 @@
+numpy
+black
+
+-e transition_dynamic_simulator
