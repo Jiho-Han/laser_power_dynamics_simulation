@@ -61,5 +61,11 @@ class MultiStateSystem(list):
         A[-1] = np.ones(len(A))
         B = dNdt
         B[-1] = sum(self.N)
-        N = np.matmul(np.linalg.inv(A), B)
-        self.N = N
+
+        try:
+            N = np.matmul(np.linalg.inv(A), B)
+            self.N = N
+        except np.linalg.LinAlgError:
+            raise ValueError(
+                "Currnetly does not handle cases where some states are static"
+            )
