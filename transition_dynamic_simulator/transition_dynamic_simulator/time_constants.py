@@ -20,10 +20,10 @@ class TimeConstants(list):
     @staticmethod
     def validate_data(tau):
         try:
-            assert isinstance(tau, list)
+            assert isinstance(tau, (list, np.ndarray))
             n = len(tau)
             for row in tau:
-                assert isinstance(row, list)
+                assert isinstance(row, (list, np.ndarray))
                 assert len(row) == n
                 for value in row:
                     assert isinstance(value, (float, int))
@@ -32,3 +32,7 @@ class TimeConstants(list):
 
     def get_rates(self):
         return np.reciprocal(np.array(self).astype(float))
+
+    @staticmethod
+    def get_static_tc(n):
+        return TimeConstants(np.full([n, n], np.inf))

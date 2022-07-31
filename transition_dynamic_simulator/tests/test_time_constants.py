@@ -19,6 +19,10 @@ class TestTimeConstants(unittest.TestCase):
             gamma, [[1 / 1, 1 / 2, 1 / 3], [1 / 4, 1 / 5, 1 / 6], [1 / 7, 1 / 8, 1 / 9]]
         )
 
+    def test_get_static_matrix(self):
+        tau = TimeConstants.get_static_tc(2)
+        np.testing.assert_equal(tau, [[np.inf, np.inf], [np.inf, np.inf]])
+
 
 if __name__ == "__main__":
     unittest.main()
