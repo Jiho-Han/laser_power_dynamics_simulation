@@ -1,4 +1,5 @@
 numpy
 black
+scipy 
 
 -e transition_dynamic_simulator
